@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\article;
+use App\category;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -14,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-       return view('site.articles');
+        return view('site.articles');
     }
 
     /**
@@ -24,34 +25,40 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('adminpannel.createArticle');
+        $categories = category::all();
+        return view('adminpannel.createArticle', compact('categories'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'title' =>'required',
-            'articlePic' =>'required',
-            'category' =>'required',
-            'body' =>'required'
+        $this->validate($request, [
+            'title' => 'required',
+            'articlePic' => 'required',
+            'category' => 'required',
+            'body' => 'required'
         ]);
-        $title =$request->input('title');
-        $articlePic =$request->input('articlePic');
-        $body =$request->input('body');
 
+        $title = $request->input('title');
+        if ($request->hasFile('articlePic'))
+        {
+            $picName = request()->file('articlePic')->store('public/upload');
+            $articlePic = pathinfo($picName, PATHINFO_BASENAME);
+        }
+        $body = $request->input('body');
+        $category = $request->input('category');
         $articles = new article();
         $articles->user_id = 1;
-        $articles->category_id =2;
-        $articles->title =$title;
-        $articles->article_pic ='hi';
-        $articles->body =$body;
-        $articles->slug ='slug';
+        $articles->category_id = $category;
+        $articles->title = $title;
+        $articles->article_pic = $articlePic;
+        $articles->body = $body;
+        $articles->slug = 'slug';
         $articles->save();
 
     }
@@ -59,7 +66,7 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -70,7 +77,7 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -81,8 +88,8 @@ class ArticleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -93,7 +100,7 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
