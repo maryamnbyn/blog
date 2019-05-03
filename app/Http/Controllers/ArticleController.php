@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -23,7 +24,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminpannel.createArticle');
     }
 
     /**
@@ -34,7 +35,25 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'title' =>'required',
+            'articlePic' =>'required',
+            'category' =>'required',
+            'body' =>'required'
+        ]);
+        $title =$request->input('title');
+        $articlePic =$request->input('articlePic');
+        $body =$request->input('body');
+
+        $articles = new article();
+        $articles->user_id = 1;
+        $articles->category_id =2;
+        $articles->title =$title;
+        $articles->article_pic ='hi';
+        $articles->body =$body;
+        $articles->slug ='slug';
+        $articles->save();
+
     }
 
     /**
