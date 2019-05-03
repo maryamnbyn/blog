@@ -31,16 +31,18 @@
                                     </ui>
                                 </div>
                             @endif
-                            <form id="validationform" action="{{route('category.store')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
-                                {!! csrf_field() !!}
+                            <form id="validationform" action="{{ route('category.update',$categories->id) }}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان دسته بندی:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <input type="text" name="category" class="form-control" autofocus="autofocus">                            </div>
+                                        <input type="text" name="category" class="form-control" autofocus="autofocus" value="{{$categories->name}}">
+                                    </div>
                                 </div>
                                 <div class="form-group row text-right">
                                     <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                        <button type="submit" class="btn btn-space btn-primary">ایجاد دسته بندی جدید</button>
+                                        <button type="submit" class="btn btn-space btn-primary">ایجاد تغییرات</button>
                                     </div>
                                 </div>
 

@@ -38,33 +38,27 @@
                                     </thead>
                                     <tbody>
                                     @foreach($categories as $category)
-
                                         <tr>
                                             <td></td>
                                             <td>{{$category['name']}}</td>
                                             <td>{{ $category->user['name'] }}</td>
                                             <td>
-                                                <form action="{{ route('category.destroy',$category['id']) }}"
-                                                      method="POST">
-
-
+                                                <form action="{{ route('category.destroy',$category['id']) }}" method="POST">
                                                     <a class="btn btn-primary"
                                                        href="{{ route('category.edit',$category['id']) }}">Edit</a>
-
                                                     @csrf
                                                     @method('DELETE')
-
-                                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$category['id']}})">Delete
+                                                    </button>
                                                 </form>
                                             </td>
                                             <script language="javascript">
-                                                // function deleteme(id)
-                                                // {
-                                                //     if(confirm("Do you want Delete!")){
-                                                //         window.location.href='category.destroy?del='+id+'';
-                                                //         return true;
-                                                //     }
-                                                // }
+                                                function deleteme(id) {
+                                                    if (confirm("Do you want Delete!")) {
+                                                        window.location.href = 'category.destroy?del=' + id + '';
+                                                        return true;
+                                                    }
+                                                }
                                             </script>
                                         </tr>
                                     @endforeach

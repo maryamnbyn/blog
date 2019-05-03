@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\article;
 use App\category;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class CategoryController extends Controller
 {
@@ -48,17 +50,20 @@ class CategoryController extends Controller
         return redirect()->route('category.list');
 
     }
-public function getCategoriesList()
-{
-    $categories = category::all();
-    return view('adminpannel.category.categoriesList',compact('categories'));
-}
+
+    public function getCategoriesList()
+    {
+        $categories = category::all();
+        return view('adminpannel.category.categoriesList', compact('categories'));
+    }
+
     /**
      * Display the specified resource.
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         //
@@ -70,9 +75,11 @@ public function getCategoriesList()
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
-        //
+        $categories = category::where('id', $id)->first();
+        return view('adminpannel.category.editCategory', compact('categories'));
     }
 
     /**
@@ -82,9 +89,20 @@ public function getCategoriesList()
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
+
+
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'category' => 'required',
+        ]);
+
+        $categories = category::find($id);
+        $name = $request->input('category');
+        $categories->name = $name;
+        $categories->save();
+        return redirect()->route('category.list');
+
     }
 
     /**
@@ -95,10 +113,10 @@ public function getCategoriesList()
      */
     public function destroy($id)
     {
-       $delete_category = category::find($id);
-       if ($delete_category != null){
-           $delete_category->delete();
-           return redirect()->back();
-       }
+        $delete_category = category::find($id);
+        if ($delete_category != null) {
+            $delete_category->delete();
+            return redirect()->back();
+        }
     }
 }
