@@ -46,8 +46,7 @@ class ArticleController extends Controller
 
         $title = $request->input('title');
 
-        if ($request->hasFile('articlePic'))
-        {
+        if ($request->hasFile('articlePic')) {
             $picName = request()->file('articlePic')->store('public/upload');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
@@ -62,6 +61,12 @@ class ArticleController extends Controller
         $articles->body = $body;
         $articles->save();
 
+    }
+
+    public function getArticleList()
+    {
+        $articles = article::all();
+        return view('adminpannel.articles.articleList', compact('articles'));
     }
 
     /**
@@ -83,7 +88,9 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $articles = article::where('id', $id)->first();
+        $categories = category::all();
+        return view('adminpannel.articles.editArticle', compact('articles', 'categories'));
     }
 
     /**
@@ -95,7 +102,31 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'title' => 'required',
+            'articlePic' => 'required',
+            'category' => 'required',
+            'body' => 'required'
+        ]);
+
+        $title = $request->input('title');
+
+        if ($request->hasFile('articlePic')) {
+            $picName = request()->file('articlePic')->store('public/upload');
+            $articlePic = pathinfo($picName, PATHINFO_BASENAME);
+        }
+
+        $body = $request->input('body');
+        $category = $request->input('category');
+        $articles = article::find($id);
+        $articles->user_id = 1;
+        $articles->category_id = $category;
+        $articles->title = $title;
+        $articles->article_pic = $articlePic;
+        $articles->body = $body;
+        $articles->save();
+        return redirect()->route('article.list');
     }
 
     /**
@@ -106,6 +137,11 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $delete_article = article::find($id);
+        if ($delete_article != null) {
+            $delete_article->delete();
+            return redirect()->back();
+        }
     }
 }

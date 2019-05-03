@@ -39,7 +39,7 @@
                                     <a class="nav-link" href="/article/create">افزودن مقاله</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">لیست مقاله ها</a>
+                                    <a class="nav-link" href="/articles/list">لیست مقاله ها</a>
                                 </li>
                             </ul>
                         </div>

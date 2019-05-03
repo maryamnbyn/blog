@@ -18,6 +18,8 @@ class category extends Model
      *
      * @return array
      */
+
+
     public function sluggable()
     {
         return [

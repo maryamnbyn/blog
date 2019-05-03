@@ -16,4 +16,5 @@ Route::get('/adminpannel', 'controller@showAdminpannel');
 Route::resource('/article', 'ArticleController');
 Route::resource('/category', 'CategoryController');
 Route::get('/categories/list', 'CategoryController@getCategoriesList')->name('category.list');
+Route::get('/articles/list', 'ArticleController@getArticleList')->name('article.list');
 
