@@ -26,7 +26,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = category::all();
-        return view('adminpannel.createArticle', compact('categories'));
+        return view('adminpannel.articles.createArticle', compact('categories'));
     }
 
     /**
@@ -45,11 +45,13 @@ class ArticleController extends Controller
         ]);
 
         $title = $request->input('title');
+
         if ($request->hasFile('articlePic'))
         {
             $picName = request()->file('articlePic')->store('public/upload');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
+
         $body = $request->input('body');
         $category = $request->input('category');
         $articles = new article();
@@ -58,7 +60,6 @@ class ArticleController extends Controller
         $articles->title = $title;
         $articles->article_pic = $articlePic;
         $articles->body = $body;
-        $articles->slug = 'slug';
         $articles->save();
 
     }
