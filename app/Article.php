@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class article extends Model
 {
     use Sluggable;
-protected $fillable=[
-    'title','body','slug','article_pic','category_id','user_id'
-];
+
+    protected $fillable = [
+        'title', 'body', 'slug', 'article_pic', 'category_id', 'user_id'
+    ];
+
     /**
      * Return the sluggable configuration array for this model.
      *

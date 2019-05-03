@@ -14,4 +14,5 @@
 Route::get('/', 'controller@index');
 Route::get('/adminpannel', 'controller@showAdminpannel');
 Route::resource('/article', 'ArticleController');
+Route::resource('/category', 'CategoryController');
 
