@@ -54,7 +54,7 @@
                                     <a class="nav-link" href="/category/create">افزودن دسته بندی جدید</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">لیست دسته بندی ها</a>
+                                    <a class="nav-link" href="/categories/list">لیست دسته بندی ها</a>
                                 </li>
                             </ul>
                         </div>

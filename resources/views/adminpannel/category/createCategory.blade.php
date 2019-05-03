@@ -33,6 +33,8 @@
                             @endif
                             <form id="validationform" action="{{route('category.store')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
+                                @method('DELETE')
+
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان دسته بندی:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">

@@ -45,9 +45,14 @@ class CategoryController extends Controller
         $category->name = $category_name;
         $category->user_id = 1;
         $category->save();
+        return redirect()->route('category.list');
 
     }
-
+public function getCategoriesList()
+{
+    $categories = category::all();
+    return view('adminpannel.category.categoriesList',compact('categories'));
+}
     /**
      * Display the specified resource.
      *
@@ -90,6 +95,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $delete_category = category::find($id);
+       if ($delete_category != null){
+           $delete_category->delete();
+           return redirect()->back();
+       }
     }
 }
