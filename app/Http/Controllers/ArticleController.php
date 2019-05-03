@@ -102,21 +102,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $this->validate($request, [
             'title' => 'required',
             'articlePic' => 'required',
             'category' => 'required',
             'body' => 'required'
         ]);
-
         $title = $request->input('title');
-
         if ($request->hasFile('articlePic')) {
             $picName = request()->file('articlePic')->store('public/upload');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
-
         $body = $request->input('body');
         $category = $request->input('category');
         $articles = article::find($id);
@@ -137,7 +133,6 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-
         $delete_article = article::find($id);
         if ($delete_article != null) {
             $delete_article->delete();
