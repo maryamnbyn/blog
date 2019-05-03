@@ -108,11 +108,13 @@ class ArticleController extends Controller
             'category' => 'required',
             'body' => 'required'
         ]);
+
         $title = $request->input('title');
         if ($request->hasFile('articlePic')) {
             $picName = request()->file('articlePic')->store('public/upload');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
+
         $body = $request->input('body');
         $category = $request->input('category');
         $articles = article::find($id);
