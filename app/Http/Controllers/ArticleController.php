@@ -80,7 +80,8 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+       $article = article::where('id' , $id );
+        return view('site.articleDetail',compact('article'));
     }
 
     /**
@@ -115,7 +116,7 @@ class ArticleController extends Controller
         $title = $request->input('title');
 
         if ($request->hasFile('articlePic')) {
-            $picName    = request()->file('articlePic')->store('public/upload');
+            $picName    = request()->file('articlePic')->store('public/upload','asset');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
 
