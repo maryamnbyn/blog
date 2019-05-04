@@ -47,10 +47,10 @@
                                             <td>
                                                 <form action="{{ route('article.destroy',$article['id']) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                       href="{{ route('article.edit',$article['id']) }}">Edit</a>
+                                                       href="{{ route('article.edit',$article['id']) }}">ویرایش</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$article['id']}})">Delete
+                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$article['id']}})">حذف
                                                     </button>
                                                 </form>
                                             </td>

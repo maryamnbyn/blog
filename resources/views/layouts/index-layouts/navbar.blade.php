@@ -16,6 +16,29 @@
                     </a>
                 </li>
             </ul>
+            @if(Auth::check())
+
+                <div class="nav navbar-left" style="margin-right:850px">
+                    <form action="{{route('logout')}}" method="post">
+                        {!! csrf_field() !!}
+                        <button class="btn btn-xs btn-warning">خروج از حساب کاربری</button>
+
+                    </form>
+                </div>
+            @else
+
+                    <ul class="nav navbar-left nav-item"  style="margin-right:1050px ">
+                        <li>
+                            <a href="/login" style="margin-left: 10px">ورود</a>
+                        </li>
+
+                            <li>
+                                <a href="/register">عضویت</a>
+                            </li>
+
+                    </ul>
+
+            @endif
         </div>
 
 

@@ -23,3 +23,6 @@ Route::get('/adminpannel', 'controller@showAdminpannel');
 
 //rout index
 Route::get('/', 'controller@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

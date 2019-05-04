@@ -45,10 +45,10 @@
                                             <td>
                                                 <form action="{{ route('category.destroy',$category['id']) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                       href="{{ route('category.edit',$category['id']) }}">Edit</a>
+                                                       href="{{ route('category.edit',$category['id']) }}">ویرایش</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$category['id']}})">Delete
+                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$category['id']}})">حذف
                                                     </button>
                                                 </form>
                                             </td>

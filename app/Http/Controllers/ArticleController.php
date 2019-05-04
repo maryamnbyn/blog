@@ -38,10 +38,10 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title'      => 'required',
             'articlePic' => 'required',
-            'category' => 'required',
-            'body' => 'required'
+            'category'   => 'required',
+            'body'       => 'required'
         ]);
 
         $title = $request->input('title');
@@ -51,7 +51,7 @@ class ArticleController extends Controller
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
 
-        $body = $request->input('body');
+        $body     = $request->input('body');
         $category = $request->input('category');
         $articles = new article();
         $articles->user_id = 1;
@@ -88,7 +88,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        $articles = article::where('id', $id)->first();
+        $articles   = article::where('id', $id)->first();
         $categories = category::all();
         return view('adminpannel.articles.editArticle', compact('articles', 'categories'));
     }
@@ -103,26 +103,27 @@ class ArticleController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title'      => 'required',
             'articlePic' => 'required',
-            'category' => 'required',
-            'body' => 'required'
+            'category'   => 'required',
+            'body'       => 'required'
         ]);
 
         $title = $request->input('title');
+
         if ($request->hasFile('articlePic')) {
-            $picName = request()->file('articlePic')->store('public/upload');
+            $picName    = request()->file('articlePic')->store('public/upload');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
 
-        $body = $request->input('body');
+        $body     = $request->input('body');
         $category = $request->input('category');
         $articles = article::find($id);
-        $articles->user_id = 1;
+        $articles->user_id     = 1;
         $articles->category_id = $category;
-        $articles->title = $title;
+        $articles->title       = $title;
         $articles->article_pic = $articlePic;
-        $articles->body = $body;
+        $articles->body        = $body;
         $articles->save();
         return redirect()->route('article.list');
     }
@@ -135,8 +136,10 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        $delete_article = article::find($id);
-        if ($delete_article != null) {
+        $delete_article      = article::find($id);
+
+        if ($delete_article != null)
+        {
             $delete_article->delete();
             return redirect()->back();
         }
