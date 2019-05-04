@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class article extends Model
 {
     use Sluggable;
-
     protected $fillable = [
         'title', 'body', 'slug', 'article_pic', 'category_id', 'user_id'
     ];
@@ -18,6 +17,7 @@ class article extends Model
      *
      * @return array
      */
+
     public function sluggable()
     {
         return [
@@ -26,4 +26,10 @@ class article extends Model
             ]
         ];
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

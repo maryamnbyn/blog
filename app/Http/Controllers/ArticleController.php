@@ -54,18 +54,20 @@ class ArticleController extends Controller
         $body     = $request->input('body');
         $category = $request->input('category');
         $articles = new article();
-        $articles->user_id = 1;
         $articles->category_id = $category;
         $articles->title = $title;
         $articles->article_pic = $articlePic;
         $articles->body = $body;
-        $articles->save();
+        auth()->user()->articles()->save($articles);
+        return redirect()->route('article.list');
+
 
     }
 
     public function getArticleList()
     {
         $articles = article::all();
+
         return view('adminpannel.articles.articleList', compact('articles'));
     }
 
@@ -119,12 +121,11 @@ class ArticleController extends Controller
         $body     = $request->input('body');
         $category = $request->input('category');
         $articles = article::find($id);
-        $articles->user_id     = 1;
         $articles->category_id = $category;
         $articles->title       = $title;
         $articles->article_pic = $articlePic;
         $articles->body        = $body;
-        $articles->save();
+        auth()->user()->articles()->save($articles);
         return redirect()->route('article.list');
     }
 

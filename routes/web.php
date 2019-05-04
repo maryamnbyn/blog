@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 // Route Articles
 Route::resource('/article', 'ArticleController');
 Route::get('/articles/list', 'ArticleController@getArticleList')->name('article.list');
@@ -23,6 +24,5 @@ Route::get('/adminpannel', 'controller@showAdminpannel');
 
 //rout index
 Route::get('/', 'controller@index');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

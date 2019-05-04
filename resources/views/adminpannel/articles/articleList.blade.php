@@ -41,16 +41,16 @@
                                     @foreach($articles as $article)
                                         <tr>
                                             <td></td>
-                                            <td>{{$article['title']}}</td>
-                                            <td></td>
-                                            <td>{{ $article['body'] }}</td>
+                                            <td>{{$article->title}}</td>
+                                            <td>{{$article->user->full_name}}</td>
+                                            <td>{{ $article->body }}</td>
                                             <td>
-                                                <form action="{{ route('article.destroy',$article['id']) }}" method="POST">
+                                                <form action="{{ route('article.destroy',$article->id) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                       href="{{ route('article.edit',$article['id']) }}">ویرایش</a>
+                                                       href="{{ route('article.edit',$article->id) }}">ویرایش</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$article['id']}})">حذف
+                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$article->id}})">حذف
                                                     </button>
                                                 </form>
                                             </td>

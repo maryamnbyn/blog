@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    protected $appends = ['full_name'];
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +37,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public  function articles()
+    {
+        return $this->hasMany(article::class);
+    }
+    public function getFullNameAttribute() {
+        return ucfirst($this->name) . ' ' . ucfirst($this->family);
+    }
 }
