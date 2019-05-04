@@ -40,8 +40,8 @@
                                     @foreach($categories as $category)
                                         <tr>
                                             <td></td>
-                                            <td>{{$category['name']}}</td>
-                                            <td>{{ $category->user['name'] }}</td>
+                                            <td>{{$category->name}}</td>
+                                            <td>{{ $category->user->full_name}} </td>
                                             <td>
                                                 <form action="{{ route('category.destroy',$category['id']) }}" method="POST">
                                                     <a class="btn btn-primary"

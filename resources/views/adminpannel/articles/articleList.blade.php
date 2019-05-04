@@ -43,7 +43,7 @@
                                             <td></td>
                                             <td>{{$article->title}}</td>
                                             <td>{{$article->user->full_name}}</td>
-                                            <td>{{ $article->body }}</td>
+                                            <td>{{ Str::words($article->body,12) }}</td>
                                             <td>
                                                 <form action="{{ route('article.destroy',$article->id) }}" method="POST">
                                                     <a class="btn btn-primary"
