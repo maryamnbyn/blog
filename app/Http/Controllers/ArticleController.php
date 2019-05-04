@@ -15,7 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('site.articles');
+        $articles = article::all();
+        return view('site.articles',compact('articles'));
     }
 
     /**
@@ -47,7 +48,7 @@ class ArticleController extends Controller
         $title = $request->input('title');
 
         if ($request->hasFile('articlePic')) {
-            $picName = request()->file('articlePic')->store('public/upload');
+            $picName = request()->file('articlePic')->store('public/upload','asset');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
 

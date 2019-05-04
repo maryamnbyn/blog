@@ -9,76 +9,21 @@
             </div>
             <div class="container">
                 <div class="row">
+                    @foreach($articles as $article)
                     <div class="col-md-3 col-sm-6 row-margin">
                         <div class="card" >
                             <div class="card-block" >
-                                <img src="img/banner/1.jpg" alt="" class="img-fluid">
+                                <img src="{{asset('storage/public/upload/'.$article->article_pic)}}" alt="" class="fix-pic">
                                 <div class="card-text">
                                     <div class="card-body">
-                                        <h4 class="card-title">مقاله شماره 1</h4>
-                                        <p class="card-text">متن مقاله شماره 1</p>
+                                        <h4 class="card-title">{{$article->title}}</h4>
                                         <a href="#" class="btn btn-primary">مشاهده</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 row-margin">
-                        <div class="card">
-                            <div class="card-block">
-                                <img src="img/banner/1.jpg" alt="" class="img-fluid">
-                                <div class="card-text">
-                                    <div class="card-body">
-                                        <h4 class="card-title">مقاله شماره 1</h4>
-                                        <p class="card-text">متن مقاله شماره 1</p>
-                                        <a href="#" class="btn btn-primary">مشاهده</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 row-margin">
-                        <div class="card">
-                            <div class="card-block">
-                                <img src="img/banner/1.jpg" alt="" class="img-fluid">
-                                <div class="card-text">
-                                    <div class="card-body">
-                                        <h4 class="card-title">مقاله شماره 1</h4>
-                                        <p class="card-text">متن مقاله شماره 1</p>
-                                        <a href="#" class="btn btn-primary">مشاهده</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 row-margin">
-                        <div class="card">
-                            <div class="card-block">
-                                <img src="img/banner/1.jpg" alt="" class="img-fluid">
-                                <div class="card-text">
-                                    <div class="card-body">
-                                        <h4 class="card-title">مقاله شماره 1</h4>
-                                        <p class="card-text">متن مقاله شماره 1</p>
-                                        <a href="#" class="btn btn-primary">مشاهده</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 row-margin">
-                        <div class="card">
-                            <div class="card-block">
-                                <img src="img/banner/1.jpg" alt="" class="img-fluid">
-                                <div class="card-text">
-                                    <div class="card-body">
-                                        <h4 class="card-title">مقاله شماره 1</h4>
-                                        <p class="card-text">متن مقاله شماره 1</p>
-                                        <a href="#" class="btn btn-primary">مشاهده</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
