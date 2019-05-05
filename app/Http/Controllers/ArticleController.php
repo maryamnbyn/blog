@@ -80,8 +80,13 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
+<<<<<<< HEAD
        $article = article::where('id' , $id );
         return view('site.articleDetail',compact('article'));
+=======
+        $articles = article::where('id',$id)->first();
+        return view('site.article',compact('articles'));
+>>>>>>> ec519baac87df244bfeb0e32f123f46c8ed52935
     }
 
     /**

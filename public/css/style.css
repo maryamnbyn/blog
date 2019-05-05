@@ -603,6 +603,7 @@ li.grey{
 footer{
     background: #eceff1;
 }
+<<<<<<< HEAD
 .fix-pic
 {
     width: 100%;
@@ -612,4 +613,10 @@ footer{
 .fix-height
 {
     height: 150px;
+=======
+
+.img-max-width {
+    width: 100%;
+    height: 200px;
+>>>>>>> ec519baac87df244bfeb0e32f123f46c8ed52935
 }

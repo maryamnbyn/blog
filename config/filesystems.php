@@ -61,6 +61,10 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
+<<<<<<< HEAD
+=======
+
+>>>>>>> ec519baac87df244bfeb0e32f123f46c8ed52935
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
