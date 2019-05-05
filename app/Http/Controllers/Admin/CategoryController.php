@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\article;
 use App\category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use PhpParser\Node\Stmt\DeclareDeclare;
 
 class CategoryController extends Controller
@@ -16,7 +17,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-
+        $categories = category::all();
+        return view('Admin.category.index', compact('categories'));
     }
 
     /**
@@ -26,7 +28,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('adminpannel.category.createCategory');
+        return view('Admin.category.create');
 
     }
 
@@ -51,11 +53,6 @@ class CategoryController extends Controller
 
     }
 
-    public function getCategoriesList()
-    {
-        $categories = category::all();
-        return view('adminpannel.category.categoriesList', compact('categories'));
-    }
 
     /**
      * Display the specified resource.
@@ -79,7 +76,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $categories = category::where('id', $id)->first();
-        return view('adminpannel.category.editCategory', compact('categories'));
+        return view('Admin.category.edit', compact('categories'));
     }
 
     /**
@@ -100,7 +97,7 @@ class CategoryController extends Controller
         $name = $request->input('category');
         $categories->name = $name;
         $categories->save();
-        return redirect()->route('category.list');
+        return redirect()->route('category.index');
 
     }
 

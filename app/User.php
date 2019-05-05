@@ -17,7 +17,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'family','phone','email', 'password',
+        'name',
+        'family',
+        'phone',
+        'email',
+        'password',
     ];
 
     /**
@@ -26,7 +30,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -41,7 +46,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(article::class);
     }
-    public function getFullNameAttribute() {
+    public function getFullNameAttribute()
+    {
         return ucfirst($this->name) . ' ' . ucfirst($this->family);
     }
 }

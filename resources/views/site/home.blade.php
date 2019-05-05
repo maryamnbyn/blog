@@ -1,7 +1,7 @@
 @extends('index')
 @section('content')
     <!-- start slider-->
-    @include('layouts.index-layouts.slider')
+    @include('layouts.index.slider')
     <!-- end slider-->
     <title>خانه</title>
 

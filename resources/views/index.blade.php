@@ -13,10 +13,10 @@
 <header>
     <!-- Navbar content -->
 
-@include('layouts.index-layouts.navbar')
+@include('layouts.index.navbar')
 </header>
 
 @yield('content')
-{{--@include('layouts.index-layouts.footer')--}}
+{{--@include('layouts.index.footer')--}}
 </body>
 </html>

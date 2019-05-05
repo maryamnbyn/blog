@@ -11,12 +11,5 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function index()
-    {
-        return view('site.home');
-    }
-    public function showAdminpannel()
-    {
-        return view('adminpannel');
-    }
+
 }

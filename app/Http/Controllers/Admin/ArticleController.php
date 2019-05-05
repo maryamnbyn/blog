@@ -1,13 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\article;
 use App\category;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    public function dashboard()
+    {
+        return view('adminpannel');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +22,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = article::all();
-        return view('site.articles',compact('articles'));
+        return view('admin.articles.index',compact('articles'));
     }
 
     /**
@@ -27,7 +33,7 @@ class ArticleController extends Controller
     public function create()
     {
         $categories = category::all();
-        return view('adminpannel.articles.createArticle', compact('categories'));
+        return view('Admin.articles.create', compact('categories'));
     }
 
     /**
@@ -39,20 +45,20 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title'      => 'required',
+            'title' => 'required',
             'articlePic' => 'required',
-            'category'   => 'required',
-            'body'       => 'required'
+            'category' => 'required',
+            'body' => 'required'
         ]);
 
         $title = $request->input('title');
 
         if ($request->hasFile('articlePic')) {
-            $picName = request()->file('articlePic')->store('public/upload','asset');
+            $picName = request()->file('articlePic')->store('public/upload', 'asset');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
 
-        $body     = $request->input('body');
+        $body = $request->input('body');
         $category = $request->input('category');
         $articles = new article();
         $articles->category_id = $category;
@@ -60,16 +66,9 @@ class ArticleController extends Controller
         $articles->article_pic = $articlePic;
         $articles->body = $body;
         auth()->user()->articles()->save($articles);
-        return redirect()->route('article.list');
+        return redirect()->route('articles.index');
 
 
-    }
-
-    public function getArticleList()
-    {
-        $articles = article::all();
-
-        return view('adminpannel.articles.articleList', compact('articles'));
     }
 
     /**
@@ -80,13 +79,10 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-<<<<<<< HEAD
        $article = article::where('id' , $id );
         return view('site.articleDetail',compact('article'));
-=======
         $articles = article::where('id',$id)->first();
         return view('site.article',compact('articles'));
->>>>>>> ec519baac87df244bfeb0e32f123f46c8ed52935
     }
 
     /**
@@ -95,11 +91,10 @@ class ArticleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(article $article)
     {
-        $articles   = article::where('id', $id)->first();
         $categories = category::all();
-        return view('adminpannel.articles.editArticle', compact('articles', 'categories'));
+        return view('Admin.articles.editArticle', compact('article', 'categories'));
     }
 
     /**
@@ -133,6 +128,7 @@ class ArticleController extends Controller
         $articles->article_pic = $articlePic;
         $articles->body        = $body;
         auth()->user()->articles()->save($articles);
+
         return redirect()->route('article.list');
     }
 
@@ -142,13 +138,11 @@ class ArticleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(article $article)
     {
-        $delete_article      = article::find($id);
-
-        if ($delete_article != null)
+        if ($article != null)
         {
-            $delete_article->delete();
+            $article->delete();
             return redirect()->back();
         }
     }

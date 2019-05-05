@@ -11,18 +11,22 @@
 |
 */
 Auth::routes();
-// Route Articles
-Route::resource('/article', 'ArticleController');
-Route::get('/articles/list', 'ArticleController@getArticleList')->name('article.list');
 
-// Route Categories
-Route::resource('/category', 'CategoryController');
-Route::get('/categories/list', 'CategoryController@getCategoriesList')->name('category.list');
+//Route Admin
 
-//rout adminpannel
-Route::get('/adminpannel', 'controller@showAdminpannel');
 
-//rout index
-Route::get('/', 'controller@index');
+Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
+    Route::resource('/articles', 'ArticleController');
+    Route::resource('/category', 'CategoryController');
+    Route::get('/dashboard', 'ArticleController@dashboard');
+});
+
+//Route site
+
+Route::group(['namespace' => 'Site'] ,function(){
+    Route::resource('/article', 'ArticleController');
+    Route::get('/', 'ArticleController@index');
+
+});
 
 

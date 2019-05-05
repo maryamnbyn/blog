@@ -36,10 +36,10 @@
                         <div id="submenu-3" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/article/create">افزودن مقاله</a>
+                                    <a class="nav-link" href="/admin/articles/create">افزودن مقاله</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/articles/list">لیست مقاله ها</a>
+                                    <a class="nav-link" href="/admin/articles">لیست مقاله ها</a>
                                 </li>
                             </ul>
                         </div>
@@ -51,10 +51,10 @@
                         <div id="submenu-4" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/category/create">افزودن دسته بندی جدید</a>
+                                    <a class="nav-link" href="/admin/category/create">افزودن دسته بندی جدید</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/categories/list">لیست دسته بندی ها</a>
+                                    <a class="nav-link" href="/admin/category">لیست دسته بندی ها</a>
                                 </li>
                             </ul>
                         </div>

@@ -1,7 +1,6 @@
 @extends('index')
 @section('content')
     <title>مقاله ها</title>
-<<<<<<< HEAD
                     <main role="main">
                         <div class="album py-5 bg-light">
                             <div class="container-fluid">
@@ -31,10 +30,7 @@
                             </div>
                         </div>
                         </div>
-\
                     </main>
-=======
-
     <div class="container-fluid">
         <div class="content_owla-carousel rounded my-3">
             <div class="border-bottom mx-5 py-4 mb-2">
@@ -63,5 +59,4 @@
             </div>
         </div>
     </div>
->>>>>>> ec519baac87df244bfeb0e32f123f46c8ed52935
 @endsection

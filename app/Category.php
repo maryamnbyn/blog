@@ -5,7 +5,7 @@ namespace App;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
-class category extends Model
+class Category extends Model
 {
     use Sluggable;
     protected $fillable = [
