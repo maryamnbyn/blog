@@ -42,13 +42,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'category' => 'required'
+            'name' => 'required|unique:categories'
         ]);
 
-        $category_name = $request->input('category');
+        $category_name = $request->input('name');
         $category = new category();
         $category->name = $category_name;
-        $category->user_id = 1;
         $category->save();
         return redirect('admin/category');
 

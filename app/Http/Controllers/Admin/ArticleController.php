@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\article;
-use App\category;
+use App\Article;
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -45,27 +46,26 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'title' => 'required|unique:articles',
             'articlePic' => 'required',
             'category' => 'required',
             'body' => 'required'
         ]);
-
+        $user_id = Auth::user()->id;
         $title = $request->input('title');
-
         if ($request->hasFile('articlePic')) {
             $picName = request()->file('articlePic')->store('public/upload', 'asset');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
-
         $body = $request->input('body');
         $category = $request->input('category');
         $articles = new article();
         $articles->category_id = $category;
+        $articles->user_id = $user_id;
         $articles->title = $title;
         $articles->article_pic = $articlePic;
         $articles->body = $body;
-        auth()->user()->articles()->save($articles);
+        $articles->save();
         return redirect('admin/articles');
 
 
@@ -79,9 +79,9 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-       $article = article::where('id' , $id );
+       $article = Article::where('id' , $id );
         return view('site.articleDetail',compact('article'));
-        $articles = article::where('id',$id)->first();
+        $articles = Article::where('id',$id)->first();
         return view('site.article',compact('articles'));
     }
 
@@ -91,7 +91,7 @@ class ArticleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(article $article)
+    public function edit(Article $article)
     {
         $categories = category::all();
         return view('admin.articles.edit', compact('article', 'categories'));
@@ -112,22 +112,19 @@ class ArticleController extends Controller
             'category'   => 'required',
             'body'       => 'required'
         ]);
-
-        $title = $request->input('title');
-
         if ($request->hasFile('articlePic')) {
             $picName    = request()->file('articlePic')->store('public/upload','asset');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
+        $articles = Article::where('id' , $id);
+        $articles->update([
+            'category_id' =>$request->input('category'),
+            'user_id'     =>(Auth::user()->id),
+            'title'       =>$request->input('title'),
+            'article_pic' =>$articlePic,
+            'body'        =>$request->input('body'),
+            ]);
 
-        $body     = $request->input('body');
-        $category = $request->input('category');
-        $articles = article::find($id);
-        $articles->category_id = $category;
-        $articles->title       = $title;
-        $articles->article_pic = $articlePic;
-        $articles->body        = $body;
-        auth()->user()->articles()->save($articles);
 
         return redirect('admin/articles');
     }
@@ -138,7 +135,7 @@ class ArticleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(article $article)
+    public function destroy(Article $article)
     {
         if ($article != null)
         {
