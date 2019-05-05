@@ -14,7 +14,6 @@ Auth::routes();
 
 //Route Admin
 
-
 Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
     Route::resource('/articles', 'ArticleController');
     Route::resource('/category', 'CategoryController');
@@ -24,7 +23,8 @@ Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
 //Route site
 
 Route::group(['namespace' => 'Site'] ,function(){
-    Route::resource('/article', 'ArticleController');
+    Route::resource('/articles', 'ArticleController')->only('index');
+    Route::resource('/category', 'CategoryController')->only('index');
     Route::get('/', 'ArticleController@index');
 
 });

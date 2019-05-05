@@ -31,13 +31,13 @@
                                     </ui>
                                 </div>
                             @endif
-                            <form id="validationform" action="{{ route('article.update',$articles->id) }}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
+                            <form id="validationform" action="{{url('admin/articles',$article->id)}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان مقاله:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <input type="text" name="title" class="form-control" autofocus="autofocus" value="{{$articles->title}}">                            </div>
+                                        <input type="text" name="title" class="form-control" autofocus="autofocus" value="{{$article->title}}">                            </div>
                                 </div>
 
                                 <div class="form-group row">
@@ -61,7 +61,7 @@
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">متن مقاله:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <textarea type="text" name="body" class="form-control" autofocus="autofocus">{{$articles->body}}</textarea>
+                                        <textarea type="text" name="body" class="form-control" autofocus="autofocus">{{$article->body}}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group row text-right">

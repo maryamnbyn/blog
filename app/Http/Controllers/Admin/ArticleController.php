@@ -66,7 +66,7 @@ class ArticleController extends Controller
         $articles->article_pic = $articlePic;
         $articles->body = $body;
         auth()->user()->articles()->save($articles);
-        return redirect()->route('articles.index');
+        return redirect('admin/articles');
 
 
     }
@@ -94,7 +94,7 @@ class ArticleController extends Controller
     public function edit(article $article)
     {
         $categories = category::all();
-        return view('Admin.articles.editArticle', compact('article', 'categories'));
+        return view('admin.articles.edit', compact('article', 'categories'));
     }
 
     /**
@@ -129,7 +129,7 @@ class ArticleController extends Controller
         $articles->body        = $body;
         auth()->user()->articles()->save($articles);
 
-        return redirect()->route('article.list');
+        return redirect('admin/articles');
     }
 
     /**

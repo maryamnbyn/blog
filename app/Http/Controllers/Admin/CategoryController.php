@@ -10,6 +10,7 @@ use PhpParser\Node\Stmt\DeclareDeclare;
 
 class CategoryController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +50,7 @@ class CategoryController extends Controller
         $category->name = $category_name;
         $category->user_id = 1;
         $category->save();
-        return redirect()->route('category.list');
+        return redirect('admin/category');
 
     }
 
@@ -97,7 +98,7 @@ class CategoryController extends Controller
         $name = $request->input('category');
         $categories->name = $name;
         $categories->save();
-        return redirect()->route('category.index');
+        return redirect('admin/category');
 
     }
 

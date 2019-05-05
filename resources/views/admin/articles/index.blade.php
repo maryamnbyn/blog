@@ -45,9 +45,9 @@
                                             <td>{{$article->user->full_name}}</td>
                                             <td>{{ Str::words($article->body,15) }}</td>
                                             <td>
-                                                <form action="{{ route('article.destroy',$article->id) }}" method="POST">
+                                                <form action="{{ url('admin/articles',$article->id) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                       href="{{ route('article.edit',$article->id) }}">ویرایش</a>
+                                                       href="{{ route('articles.edit',['article' =>$article->id ])  }}">ویرایش</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" onClick="deleteme({{$article->id}})">حذف

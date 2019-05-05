@@ -32,7 +32,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>نام دسته بندی</th>
-                                        <th>ایجاد کننده دسته بندی</th>
                                         <th>ویرایش</th>
                                     </tr>
                                     </thead>
@@ -41,9 +40,8 @@
                                         <tr>
                                             <td></td>
                                             <td>{{$category->name}}</td>
-                                            <td>{{ $category->user->full_name}} </td>
                                             <td>
-                                                <form action="{{ route('category.destroy',$category['id']) }}" method="POST">
+                                                <form action="{{ url('admin/category',$category->id) }}" method="POST">
                                                     <a class="btn btn-primary"
                                                        href="{{ route('category.edit',$category['id']) }}">ویرایش</a>
                                                     @csrf
