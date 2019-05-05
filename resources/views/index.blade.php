@@ -17,6 +17,6 @@
 </header>
 
 @yield('content')
-@include('layouts.index-layouts.footer')
+{{--@include('layouts.index-layouts.footer')--}}
 </body>
 </html>

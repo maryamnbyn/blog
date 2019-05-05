@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('بازیابی پسورد') }}</div>
+                <div class="card-header"><b>{{ __('بازیابی پسورد') }}</b></div>
 
                 <div class="card-body">
                     @if (session('status'))
