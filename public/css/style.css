@@ -19,6 +19,10 @@ body{
     color: #515151;
 }
 /* Three image containers (use 25% for four, and 50% for two, etc) */
+.a
+{
+    color: #3d4852 !important;
+}
 .imgm
 {
 

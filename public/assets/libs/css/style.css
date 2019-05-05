@@ -301,6 +301,9 @@ a:hover{
 
 
 }
+.a{
+    color: #6c757d !important;
+}
 .navbar .nav-item a{
     color: white !important;
 }

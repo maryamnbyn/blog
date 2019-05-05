@@ -23,13 +23,13 @@
                     <div class="card">
                         <div class="card-body">
                             @if(count($errors))
-                            <div class="alert alert-danger">
-                                <ui>
-                                    @foreach($errors->all() as $error)
-                                      <li> {{$error}}</li>
+                                <div class="alert alert-danger">
+                                    <ui>
+                                        @foreach($errors->all() as $error)
+                                            <li> {{$error}}</li>
                                         @endforeach
-                                </ui>
-                            </div>
+                                    </ui>
+                                </div>
                             @endif
                             <form id="validationform" action="{{route('article.store')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
