@@ -11,6 +11,16 @@
 body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     font-family:'IRANSans' !important; ;
 }
+body{
+    border-top: 4px solid #009bff;
+    border-bottom: 4px solid #009bff;
+    background-image: url(../img/top-shadow.png);
+    background-repeat: no-repeat;
+    background-position: center top;
+}
+nav{
+    border-bottom: 4px solid #009bff;
+}
 .content{
     font-size: 13px;
     line-height: 24px;

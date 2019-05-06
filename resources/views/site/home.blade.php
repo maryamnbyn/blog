@@ -14,10 +14,6 @@
 
 @endsection
 
-@section('content')
 
-    @include('layouts.index.category')
-
-@endsection
 
 
