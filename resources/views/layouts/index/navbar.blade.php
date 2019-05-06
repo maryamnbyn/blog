@@ -1,48 +1,24 @@
-<div class="container-fluid menu-place">
-    <nav class="navbar navbar-expand-lg" id="menu">
-        <button class="navbar-toggler float-left ml-4 mt-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars text-white"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle hvr-underline-from-center" href="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        خانه
-                    </a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle hvr-underline-from-center" href="/category" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        مقالات
-                    </a>
-                </li>
-            </ul>
-            @if(Auth::check())
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand mr-0" href="#">نام سایت</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-                <div class="nav navbar-left" style="margin-right:850px">
-                    <form action="{{route('logout')}}" method="post">
-                        {!! csrf_field() !!}
-                        <button class="btn btn-xs btn-warning">خروج از حساب کاربری</button>
-
-                    </form>
-                </div>
-            @else
-
-                    <ul class="nav navbar-left nav-item"  style="margin-right:1050px ">
-                        <li>
-                            <a href="/login" style="margin-left: 10px">ورود</a>
-                        </li>
-
-                            <li>
-                                <a href="/register">عضویت</a>
-                            </li>
-
-                    </ul>
-
-            @endif
-        </div>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto pr-3">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"> خانه <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">مقالات</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2 rounded-0" type="search" aria-label="Search" style="border-radius: 0px 5px 5px 0 !important;">
+            <button class="btn btn-primary rounded-0 my-2 my-sm-0" type="submit" style="border-radius: 5px 0 0 5px !important;">جستوجو</button>
+        </form>
+    </div>
+</nav>
 
 
-    </nav>
-    <!--    <div class="row" style="min-height: 2px; background: black; position: absolute; top: 38px; width: 100%;"></div>-->
 
-</div>

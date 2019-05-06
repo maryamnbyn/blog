@@ -14,7 +14,7 @@ Auth::routes();
 
 //Route Admin
 
-Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' ,'middleware' => 'admin'] ,function(){
+Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
     Route::resource('/articles', 'ArticleController');
     Route::resource('/category', 'CategoryController');
     Route::get('/dashboard', 'ArticleController@dashboard');

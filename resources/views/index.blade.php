@@ -1,22 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/css/bootstrap-rtl.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/css/hover.css">
-    <link rel="stylesheet" href="/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/owl.theme.default.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/site/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/site/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="/site/css/index.css">
 </head>
 <body>
-<header>
+<header class="container mt-5 mb-4">
     <!-- Navbar content -->
 
 @include('layouts.index.navbar')
+
 </header>
 
-@yield('content')
-{{--@include('layouts.index.footer')--}}
+<div class="container mb-5">
+
+    <div class="row">
+
+        <div class="col-7">
+
+            @yield('offer')
+
+        </div>
+        <div class="col-2 text-center">
+            <!--adv-->
+            <img src="/site/img/adv/2.jpg" alt="" class="img-fluid">
+            <img src="/site/img/adv/7.jpg" alt="" class="img-fluid">
+            <img src="/site/img/adv/fajr37.jpg" alt="" class="img-fluid">
+        </div>
+        @yield('row')
+    </div>
+
+    @yield('content')
+
+
+</div>
+
+@include('layouts.index.footer')
+
+<script src="/site/js/jquery.min.js"></script>
+<script src="/site/js/bootstrap/bootstrap.min.js"></script>
+<script src="/site/js/index.js"></script>
 </body>
 </html>
