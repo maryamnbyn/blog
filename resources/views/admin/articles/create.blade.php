@@ -31,7 +31,7 @@
                                     </ui>
                                 </div>
                             @endif
-                            <form id="validationform" action="{{route('admin.articles.store')}}"  method="post" enctype="multipart/form-data">
+                            <form id="validationform" action="{{url('admin/articles')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان مقاله:</label>
@@ -80,4 +80,17 @@
         </div>
     </div>
 
+@endsection
+@section('styles')
+
+    <link href="/admin/documentation/css/bootstrap-select.min.css" rel="stylesheet">
+
+@endsection
+
+@section('scripts')
+
+    <script src="/admin/documentation/js/bootstrap-select.min.js"></script>
+    <script>
+        $('#category').selectpicker();
+    </script>
 @endsection

@@ -51,7 +51,7 @@ class UserController extends Controller
             'name'     => $request->input('name'),
             'family'   => $request->input('family'),
             'phone'    => $request->input('phone'),
-            'role'     => 'admin',
+            'role'     =>  (['role' => 'admin']),
             'email'    => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);

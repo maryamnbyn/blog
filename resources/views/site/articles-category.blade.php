@@ -10,7 +10,7 @@
                 <div class="media py-2 border-bottom ">
                     <img src="{{asset('storage/public/upload/'.$article->article_pic)}}" class="align-self-start ml-3 img-fluid" style="width:80px">
                     <div class="media-body">
-                        <a href="{{url('articles',$article->id)}}" class="side-link">{{$article->section_body}}</a>
+                        <a href="{{route('articles.show',['article' => $article->id])}}" class="side-link">{{$article->section_body}}</a>
                     </div>
                 </div>
 

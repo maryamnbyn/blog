@@ -44,6 +44,7 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'title'      => 'required|unique:articles',
             'articlePic' => 'required',
@@ -58,7 +59,6 @@ class ArticleController extends Controller
 
          $article = Article::create([
                 'user_id'     => Auth::user()->id,
-                'category_id' => $request->input('category'),
                 'title'       => $request->input('title'),
                 'article_pic' => $articlePic,
                 'body'        => $request->input('body'),
@@ -67,7 +67,6 @@ class ArticleController extends Controller
 
         return redirect('admin/articles');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -90,27 +89,32 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Article $article)
     {
         $this->validate($request, [
-            'title'      => 'required',
-            'articlePic' => 'required',
-            'category'   => 'required',
-            'body'       => 'required'
+            'title' => 'required',
+            'category' => 'required',
+            'body' => 'required'
         ]);
-        if ($request->hasFile('articlePic')) {
-            $picName    = request()->file('articlePic')->store('public/upload', 'asset');
-            $articlePic = pathinfo($picName, PATHINFO_BASENAME);
+        $article->update([
+            'user_id' => (Auth::user()->id),
+            'title' => $request->input('title'),
+            'body' => $request->input('body'),
+        ]);
+
+        if (!empty(request()->file('articlePic')))
+        {
+            if ($request->hasFile('articlePic')) {
+                $picName = request()->file('articlePic')->store('public/upload', 'asset');
+                $articlePic = pathinfo($picName, PATHINFO_BASENAME);
+            }
+            $article->update([
+                'article_pic' => $articlePic,
+            ]);
         }
-        $articles = Article::where('id', $id);
-        $articles->update([
-            'category_id' => $request->input('category'),
-            'user_id'     => (Auth::user()->id),
-            'title'       => $request->input('title'),
-            'article_pic' => $articlePic,
-            'body'        => $request->input('body'),
-        ]);
-        return redirect('admin/articles');
+        $article->categories()->sync(request('category'));
+        return back();
+
     }
     /**
      * Remove the specified resource from storage.

@@ -32,7 +32,7 @@
 
                 <div class="media py-2 border-bottom ">
                     <div class="media-body">
-                        <a href="{{url('articles',$article->id)}}" class="side-link">
+                        <a href="{{route('articles.show',['article' => $article->id])}}" class="side-link">
                             {{$article->section_body}}</a>
                     </div>
                     <img src="{{asset('storage/public/upload/'.$article->article_pic)}}"

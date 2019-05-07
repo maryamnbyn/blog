@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/admin/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="/admin/assets/vendor/fonts/flag-icon-css/flag-icon.min.css">
 
+@yield('styles')
     <title>ادمین پنل</title>
 </head>
 <body>
@@ -48,6 +49,7 @@
 <!-- ============================================================== -->
 <!-- Optional JavaScript -->
 <!-- jquery 3.3.1 -->
+
 <script src="/admin/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
 <!-- bootstap bundle js -->
 <script src="/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
@@ -56,6 +58,8 @@
 <!-- main js -->
 <script src="/admin/assets/libs/js/main-js.js"></script>
 <script src="/admin/assets/libs/js/dashboard-ecommerce.js"></script>
+@yield('scripts')
+
 </body>
 
 </html>

@@ -18,8 +18,8 @@
                         <li class="rtl">
                             @foreach($categories as $category)
 
-                                <a class="sub_sub_menu link-subtitle nav-link" href="{{url('category',$category->slug)}}">
-                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                <a class="sub_sub_menu link-subtitle nav-link" href="{{route('category.show',['category' =>$category->slug ])}}">
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
 
                             @endforeach
 

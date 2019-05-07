@@ -43,10 +43,10 @@
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">دسته بندی:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <select type="text" name="category" class="form-control" placeholder="categoryID">
+                                        <select type="text" name="category[]" class="form-control" placeholder="categoryID">
                                             @foreach($categories as $category)
 
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                                <option value="{{$category['id']}}">{{$category['name']}}</option>
 
                                             @endforeach
                                         </select>

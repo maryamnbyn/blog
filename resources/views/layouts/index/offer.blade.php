@@ -8,7 +8,7 @@
             <div class="border p-2">
                 <img src="{{asset('storage/public/upload/'.$article->article_pic)}}" class="img-fluid" alt="">
                 <div class="media-body">
-                    <a href="{{url('articles',$article->id)}}" class="side-link">
+                    <a href="{{route('articles.show',['article' => $article->id])}}" class="side-link">
                         {{$article->section_body}}
                     </a>
                 </div>

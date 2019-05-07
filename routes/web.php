@@ -14,7 +14,7 @@ Auth::routes();
 
 //Route Admin
 
-Route::group(['as'=>'admin.','namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
+Route::group(['as'=>'admin.','namespace' => 'Admin' ,'prefix' => 'admin', 'middleware'=>'admin' ] ,function(){
     Route::resource('/articles', 'ArticleController')->except('show');
     Route::resource('/category', 'CategoryController')->except('show');;
     Route::resource('/users', 'UserController')->except('show');;
