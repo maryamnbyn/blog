@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
-        return view('Admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('Admin.category.create');
+        return view('admin.category.create');
 
     }
 
@@ -54,17 +54,6 @@ class CategoryController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -76,7 +65,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $categories = category::where('id', $id)->first();
-        return view('Admin.category.edit', compact('categories'));
+        return view('admin.category.edit', compact('categories'));
     }
 
     /**

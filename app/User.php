@@ -10,7 +10,6 @@ class User extends Authenticatable
 {
     use Notifiable;
     protected $appends = ['full_name'];
-    protected $attributes = ['full_name'];
 
     /**
      * The attributes that are mass assignable.

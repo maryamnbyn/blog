@@ -31,29 +31,35 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>نام دسته بندی</th>
-                                        <th>ویرایش</th>
+                                        <th>نام </th>
+                                        <th>شماره تماس</th>
+                                        <th>ایمیل</th>
+                                        <th>نقش</th>
+
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($categories as $category)
+                                    @foreach($users as $user)
                                         <tr>
                                             <td></td>
-                                            <td>{{$category->name}}</td>
+                                            <td>{{ $user->full_name }}</td>
+                                            <td>{{$user->phone}}</td>
+                                            <td>{{ $user->email }}</td>
+                                            <td>{{ $user->role }}</td>
                                             <td>
-                                                <form action="{{ route('admin.category.destroy' ,['article' =>$category->id]) }}" method="POST">
+                                                <form action="{{ route('admin.users.destroy',['user' =>$user->id ]) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                       href="{{ route('admin.category.edit',$category['id']) }}">ویرایش</a>
+                                                       href="{{ route('admin.users.edit',['user' =>$user->id ])  }}">ویرایش</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$category['id']}})">حذف
+                                                    <button type="submit" class="btn btn-danger" onClick="deleteme({{$user->id}})">حذف
                                                     </button>
                                                 </form>
                                             </td>
                                             <script language="javascript">
                                                 function deleteme(id) {
                                                     if (confirm("Do you want Delete!")) {
-                                                        window.location.href = 'category.destroy?del=' + id + '';
+                                                        window.location.href = 'users.destroy?del=' + id + '';
                                                         return true;
                                                     }
                                                 }

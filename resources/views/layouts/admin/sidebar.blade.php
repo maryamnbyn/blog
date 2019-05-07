@@ -18,12 +18,12 @@
                         <div id="submenu-1" class="collapse submenu" style="">
                             <ul class="nav flex-column">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">افزودن مدیر جدید <span class="badge badge-secondary">New</span></a>
+                                    <a class="nav-link" href="/admin/users/create">افزودن مدیر جدید <span class="badge badge-secondary">New</span></a>
 
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">ویرایش مدیر ها <span
+                                    <a class="nav-link" href="/admin/users">ویرایش کاربر ها <span
                                                 class="badge badge-secondary">New</span></a>
                                 </li>
                             </ul>

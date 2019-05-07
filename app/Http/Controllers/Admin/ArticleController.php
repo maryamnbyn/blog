@@ -10,10 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
-    public function dashboard()
-    {
-        return view('adminpannel');
-    }
+
 
     /**
      * Display a listing of the resource.
@@ -61,26 +58,17 @@ class ArticleController extends Controller
 
          $article = Article::create([
                 'user_id'     => Auth::user()->id,
+                'category_id' => $request->input('category'),
                 'title'       => $request->input('title'),
                 'article_pic' => $articlePic,
                 'body'        => $request->input('body'),
             ]);
-
         $article->categories()->attach(request('category'));
+
         return redirect('admin/articles');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
 
-    public function show($id)
-    {
-
-    }
     /**
      * Show the form for editing the specified resource.
      *

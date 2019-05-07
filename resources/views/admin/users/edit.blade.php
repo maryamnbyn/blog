@@ -31,44 +31,42 @@
                                     </ui>
                                 </div>
                             @endif
-                            <form id="validationform" action="{{route('admin.articles.update',['article'=>$article->id])}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
-                                @csrf
+                            <form id="validationform" method="post" action="{{route('admin.users.update',['user'=>$user->id])}}">
+                                {!! csrf_field() !!}
                                 @method('PUT')
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان مقاله:</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input type="text" name="title" class="form-control" autofocus="autofocus" value="{{$article->title}}">                            </div>
-                                </div>
 
                                 <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">دسته بندی:</label>
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">نام:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <select type="text" name="category" class="form-control" placeholder="categoryID">
-                                            @foreach($categories as $category)
-
-                                                <option value="{{$category->id}}">{{$category->name}}</option>
-
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">آپلود عکس مقاله:</label>
-                                    <div class="col-12 col-sm-8 col-lg-6">
-                                        <input type="file" name="articlePic" class="form-control" placeholder="عکس فایل"/>                            </div>
+                                        <input type="text" name="name" class="form-control" autofocus="autofocus" value="{{$user->name}}">                            </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">متن مقاله:</label>
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">نام خانوادگی:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <textarea type="text" name="body" class="form-control" autofocus="autofocus">{{$article->body}}</textarea>
-                                    </div>
+                                        <input type="text" name="family" class="form-control" autofocus="autofocus" value="{{$user->family}}">                            </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">َشماره تماس:</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        <input type="text" name="phone" class="form-control" autofocus="autofocus" value="{{$user->phone}}">                            </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">ایمیل:</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        <input type="text" name="email" class="form-control" autofocus="autofocus" value="{{$user->email}}">                            </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">پسورد:</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        <input type="text" name="password" class="form-control" autofocus="autofocus">                            </div>
                                 </div>
                                 <div class="form-group row text-right">
                                     <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
-                                        <button type="submit" class="btn btn-space btn-primary">ایجاد مقاله جدید</button>
+                                        <button type="submit" class="btn btn-space btn-primary">ایجاد ادمین جدید</button>
                                     </div>
                                 </div>
+
+
                             </form>
                         </div>
                     </div>

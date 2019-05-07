@@ -14,10 +14,11 @@ Auth::routes();
 
 //Route Admin
 
-Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' , 'middleware' =>'admin'] ,function(){
-    Route::resource('/articles', 'ArticleController');
-    Route::resource('/category', 'CategoryController');
-    Route::get('/dashboard', 'ArticleController@dashboard');
+Route::group(['as'=>'admin.','namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
+    Route::resource('/articles', 'ArticleController')->except('show');
+    Route::resource('/category', 'CategoryController')->except('show');;
+    Route::resource('/users', 'UserController')->except('show');;
+    Route::get('/dashboard', 'UserController@dashboard');
 });
 
 //Route site

@@ -31,12 +31,13 @@
                                     </ui>
                                 </div>
                             @endif
-                            <form id="validationform" action="{{url('admin/articles')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
+                            <form id="validationform" action="{{route('admin.articles.store')}}"  method="post" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان مقاله:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <input type="text" name="title" class="form-control" autofocus="autofocus">                            </div>
+                                        <input type="text" name="title" class="form-control" autofocus="autofocus">
+                                    </div>
                                 </div>
 
                                 <div class="form-group row">
