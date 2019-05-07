@@ -14,7 +14,7 @@ Auth::routes();
 
 //Route Admin
 
-Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
+Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' , 'middleware' =>'admin'] ,function(){
     Route::resource('/articles', 'ArticleController');
     Route::resource('/category', 'CategoryController');
     Route::get('/dashboard', 'ArticleController@dashboard');
@@ -23,8 +23,8 @@ Route::group(['namespace' => 'Admin' ,'prefix' => 'admin' ] ,function(){
 //Route site
 
 Route::group(['namespace' => 'Site'] ,function(){
-    Route::resource('/articles', 'ArticleController')->only('index');
-    Route::resource('/category', 'CategoryController')->only('index');
+    Route::resource('/articles', 'ArticleController')->only('index','show');
+    Route::resource('/category', 'CategoryController')->only('index','show');
     Route::get('/', 'ArticleController@index');
 
 });

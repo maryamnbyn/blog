@@ -34,6 +34,7 @@
                                         <th>نام مقاله</th>
                                         <th>ایجاد کننده مقاله</th>
                                         <th>متن مقاله</th>
+                                        <th>تعداد بازدید</th>
                                         <th>ویرایش</th>
                                     </tr>
                                     </thead>
@@ -41,9 +42,10 @@
                                     @foreach($articles as $article)
                                         <tr>
                                             <td></td>
-                                            <td>{{$article->title}}</td>
+                                            <td>{{ Str::words($article->title,3) }}</td>
                                             <td>{{$article->user->full_name}}</td>
-                                            <td>{{ Str::words($article->body,15) }}</td>
+                                            <td>{{ $article->section_body }}</td>
+                                            <td>{{ $article->count }}</td>
                                             <td>
                                                 <form action="{{ url('admin/articles',$article->id) }}" method="POST">
                                                     <a class="btn btn-primary"

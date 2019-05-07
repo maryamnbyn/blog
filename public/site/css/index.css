@@ -45,3 +45,8 @@ nav{
 .title{
     border-top: 3px solid #009bff;
 }
+.rtl
+{
+    text-align: right;
+
+}

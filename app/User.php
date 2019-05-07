@@ -17,6 +17,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $fillable = [
         'name',
         'family',
@@ -30,6 +31,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -40,13 +42,16 @@ class User extends Authenticatable
      *
      * @var array
      */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public  function articles()
     {
         return $this->hasMany(article::class);
     }
+
     public function getFullNameAttribute()
     {
         return ucfirst($this->name) . ' ' . ucfirst($this->family);

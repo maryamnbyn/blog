@@ -35,7 +35,6 @@
 
     @yield('content')
 
-
 </div>
 
 @include('layouts.index.footer')

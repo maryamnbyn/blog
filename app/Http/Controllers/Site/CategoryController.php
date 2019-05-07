@@ -21,7 +21,14 @@ class CategoryController extends Controller
         $articles = Article::all();
         return view('site.articles',compact('articles'));
     }
+    public function show($slug)
+    {
+        $category = Category::where('slug',$slug )->first();
+        $category_id = $category->id;
+        $articles = Article::where('category_id',$category_id)->get();
 
+       return view('site.articles-category' ,compact('articles'));
+    }
 
 
 }

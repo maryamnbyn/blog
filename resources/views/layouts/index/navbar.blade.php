@@ -9,9 +9,26 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/"> خانه <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/category">مقالات</a>
+                <li class="dropdown open">
+                    <a href="/category" class="nav-link dropdown-toggle pointer" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        مقالات
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li class="rtl">
+                            @foreach($categories as $category)
+
+                                <a class="sub_sub_menu link-subtitle nav-link" href="{{url('category',$category->slug)}}">
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+
+                            @endforeach
+
+                            </a>
+                        </li>
+                    </ul>
+
                 </li>
+
             </ul>
             @if(Auth::check())
 
