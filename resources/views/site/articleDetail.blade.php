@@ -30,43 +30,13 @@
                         {{$article->body}}
                     </p>
                 </div>
-                <div class="col-12 mt-4">
-                    <!--form-->
-                    <form action="/site/action_page.php" class="mb-5">
-                        <div class="form-group">
-                            <label for="name">نام:</label>
-                            <input type="text" class="form-control" id="name">
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">نظر:</label>
-                            <textarea name="" class="form-control" id="comment" cols="30" rows="4"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">ارسال نظر</button>
-                    </form>
-                    <!--COMMENTS-->
-                    <div class="media border p-3 my-2">
-                        <img src="/site/img/img_avatar3.png" alt="John Doe" class="ml-3 mt-3 rounded-circle"
-                             style="width:60px;">
-                        <div class="media-body">
-                            <h6>نام کاربری
-                                <small><i class="mr-3">تاریخ انتشار:</i></small>
-                            </h6>
-                            <p style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                    <div class="media border p-3 my-2">
-                        <img src="/site/img/img_avatar3.png" alt="John Doe" class="ml-3 mt-3 rounded-circle"
-                             style="width:60px;">
-                        <div class="media-body">
-                            <h6>نام کاربری
-                                <small><i class="mr-3">تاریخ انتشار:</i></small>
-                            </h6>
-                            <p style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div>
+                @if(Auth::check())
+                @include('layouts.index.comment')
+                    @else
+<a href="/login"> برای ارسال کامنت باید ابتدا وارد حساب کاربری خود شوید!</a>
+
+
+                @endif
             </div>
             @include('layouts.index.sidebar')
         </div>

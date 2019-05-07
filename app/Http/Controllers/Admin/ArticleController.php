@@ -59,13 +59,14 @@ class ArticleController extends Controller
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
 
-        $article = Article::create([
+         $article = Article::create([
                 'user_id'     => Auth::user()->id,
-                'category_id' => $request->input('category'),
                 'title'       => $request->input('title'),
                 'article_pic' => $articlePic,
                 'body'        => $request->input('body'),
             ]);
+
+        $article->categories()->attach(request('category'));
         return redirect('admin/articles');
     }
 

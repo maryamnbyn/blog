@@ -19,6 +19,11 @@ class CreateCategoriesTable extends Migration
             $table->string('slug');
             $table->timestamps();
         });
+        Schema::create('article_category', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('article_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+        });
     }
 
     /**
