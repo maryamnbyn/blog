@@ -14,8 +14,8 @@
                 <div class="row">
                     <div class="col-7">
                         <!--summery-->
-                        <p class="h6">{{$article->title}}</p>
-                        <p class="h6">{{$article->title}}</p>
+                        <p class="h6"></p>
+                        <p class="h6"></p>
                         <!--author name-->
                         <p class="h6">{{$article->user->full_name}}</p>
                     </div>

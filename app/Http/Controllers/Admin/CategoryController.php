@@ -32,7 +32,6 @@ class CategoryController extends Controller
         return view('admin.category.create');
 
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -44,17 +43,12 @@ class CategoryController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:categories'
         ]);
-
-        $category_name = $request->input('name');
-        $category = new category();
-        $category->name = $category_name;
-        $category->save();
+       Category::create([
+           'name' => $request->input('name')
+       ]);
         return redirect('admin/category');
 
     }
-
-
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -62,10 +56,9 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit($id)
+    public function edit(Category $category)
     {
-        $categories = category::where('id', $id)->first();
-        return view('admin.category.edit', compact('categories'));
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -77,15 +70,12 @@ class CategoryController extends Controller
      */
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request,Category $category)
     {
         $this->validate($request, [
-            'category' => 'required',
+            'name' => 'required|unique:categories',
         ]);
-        $categories = category::find($id);
-        $name = $request->input('category');
-        $categories->name = $name;
-        $categories->save();
+        $category->update(['name'=>$request->name]);
         return redirect('admin/category');
 
     }
@@ -96,11 +86,10 @@ class CategoryController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        $delete_category = category::find($id);
-        if ($delete_category != null) {
-            $delete_category->delete();
+        if ($category != null) {
+            $category->delete();
             return redirect()->back();
         }
     }

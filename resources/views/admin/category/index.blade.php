@@ -41,9 +41,9 @@
                                             <td></td>
                                             <td>{{$category->name}}</td>
                                             <td>
-                                                <form action="{{ route('admin.category.destroy' ,['article' =>$category->id]) }}" method="POST">
+                                                <form action="{{ route('admin.category.destroy' ,[$category->slug]) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                       href="{{ route('admin.category.edit',$category['id']) }}">ویرایش</a>
+                                                       href="{{ route('admin.category.edit',$category['slug']) }}">ویرایش</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" onClick="deleteme({{$category['id']}})">حذف

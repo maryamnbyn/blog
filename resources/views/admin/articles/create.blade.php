@@ -31,7 +31,7 @@
                                     </ui>
                                 </div>
                             @endif
-                            <form id="validationform" action="{{url('admin/articles')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
+                            <form id="validationform" action="{{route('admin.articles.store')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
                                 {!! csrf_field() !!}
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان مقاله:</label>
@@ -43,7 +43,7 @@
                                 <div class="form-group row">
                                     <label class="col-12 col-sm-3 col-form-label text-sm-right">دسته بندی:</label>
                                     <div class="col-12 col-sm-8 col-lg-6">
-                                        <select type="text" name="category" class="form-control" placeholder="categoryID">
+                                        <select class="form-control" name="category[]" multiple>
                                             @foreach($categories as $category)
 
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
@@ -80,17 +80,4 @@
         </div>
     </div>
 
-@endsection
-@section('styles')
-
-    <link href="/admin/documentation/css/bootstrap-select.min.css" rel="stylesheet">
-
-@endsection
-
-@section('scripts')
-
-    <script src="/admin/documentation/js/bootstrap-select.min.js"></script>
-    <script>
-        $('#category').selectpicker();
-    </script>
 @endsection

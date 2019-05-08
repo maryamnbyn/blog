@@ -44,14 +44,14 @@ class UserController extends Controller
             'name'      => 'required',
             'family'    => 'required',
             'phone'     => 'required',
-            'email'     => 'required|unique:users',
-            'password'  => 'required'
+            'email'     => 'required|unique:users|email',
+            'password'  => 'required|string'
         ]);
-        User::create([
+         User::create([
             'name'     => $request->input('name'),
             'family'   => $request->input('family'),
             'phone'    => $request->input('phone'),
-            'role'     =>  (['role' => 'admin']),
+            'role'     =>  'admin',
             'email'    => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
@@ -77,11 +77,11 @@ class UserController extends Controller
     public function update(Request $request,User $user)
     {
         $this->validate($request, [
-            'name'      => 'required',
-            'family'    => 'required',
-            'phone'     => 'required',
-            'password'  => 'required'
-        ]);
+        'name'      => 'required',
+        'family'    => 'required',
+        'phone'     => 'required',
+        'password'  => 'required'
+    ]);
         $user->update([
             'name'     => $request->input('name'),
             'family'   => $request->input('family'),

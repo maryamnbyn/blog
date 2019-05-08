@@ -1,5 +1,5 @@
 <nav class="nav navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand mr-0" href="#">نام سایت</a>
+        <a class="navbar-brand mr-0" href="#">کتاب دونی</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

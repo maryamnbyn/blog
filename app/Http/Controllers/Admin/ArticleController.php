@@ -47,7 +47,7 @@ class ArticleController extends Controller
 
         $this->validate($request, [
             'title'      => 'required|unique:articles',
-            'articlePic' => 'required',
+            'articlePic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category'   => 'required',
             'body'       => 'required'
         ]);
@@ -56,7 +56,6 @@ class ArticleController extends Controller
             $picName    = request()->file('articlePic')->store('public/upload', 'asset');
             $articlePic = pathinfo($picName, PATHINFO_BASENAME);
         }
-
          $article = Article::create([
                 'user_id'     => Auth::user()->id,
                 'title'       => $request->input('title'),
@@ -113,7 +112,7 @@ class ArticleController extends Controller
             ]);
         }
         $article->categories()->sync(request('category'));
-        return back();
+        return redirect()->route('admin.articles.index');
 
     }
     /**

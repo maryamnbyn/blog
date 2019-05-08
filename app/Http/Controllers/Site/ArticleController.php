@@ -25,9 +25,8 @@ class ArticleController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::where('id',$id)->first();
         $article->count = $article-> count+1;
         $article->save();
         return view('site.articleDetail', compact('article'));
