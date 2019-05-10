@@ -53,4 +53,17 @@ class Article extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function storeFile($pic)
+    {
+        if (!empty(request()->file('articlePic')))
+        {
+            $picName = $pic->store('public/upload', 'asset');
+            $articlePic = pathinfo($picName, PATHINFO_BASENAME);
+            $this->update([
+                'article_pic' => $articlePic
+            ]);
+        }
+
+    }
 }

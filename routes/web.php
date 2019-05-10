@@ -26,6 +26,7 @@ Route::group(['as'=>'admin.','namespace' => 'Admin' ,'prefix' => 'admin', 'middl
 Route::group(['namespace' => 'Site'] ,function(){
     Route::resource('/articles', 'ArticleController')->only('index','show');
     Route::resource('/category', 'CategoryController')->only('index','show');
+    Route::get('/comment', 'CommentController@index')->name('comment.index');
     Route::post('/comment', 'CommentController@store')->name('comment.store');
     Route::get('/', 'ArticleController@index');
 

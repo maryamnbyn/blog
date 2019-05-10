@@ -23,7 +23,7 @@ class CategoryController extends Controller
     }
     public function show(Category $category)
     {
-        $articles = $category->articles()->get();
+        $articles = $category->articles;
        return view('site.articles-category' ,compact('articles'));
     }
 

@@ -10,14 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
-
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         $articles = article::all();
@@ -44,7 +41,6 @@ class ArticleController extends Controller
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'title'      => 'required|unique:articles',
             'articlePic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -52,18 +48,14 @@ class ArticleController extends Controller
             'body'       => 'required'
         ]);
 
-        if ($request->hasFile('articlePic')) {
-            $picName    = request()->file('articlePic')->store('public/upload', 'asset');
-            $articlePic = pathinfo($picName, PATHINFO_BASENAME);
-        }
-         $article = Article::create([
-                'user_id'     => Auth::user()->id,
-                'title'       => $request->input('title'),
-                'article_pic' => $articlePic,
-                'body'        => $request->input('body'),
-            ]);
+        $article = Article::create([
+            'user_id'     => Auth::user()->id,
+            'title'       => $request->input('title'),
+            'body'        => $request->input('body'),
+        ]);
+        $pic = request()->file('articlePic');
+        $article->storeFile($pic);
         $article->categories()->attach(request('category'));
-
         return redirect('admin/articles');
     }
 
@@ -100,17 +92,8 @@ class ArticleController extends Controller
             'title' => $request->input('title'),
             'body' => $request->input('body'),
         ]);
-
-        if (!empty(request()->file('articlePic')))
-        {
-            if ($request->hasFile('articlePic')) {
-                $picName = request()->file('articlePic')->store('public/upload', 'asset');
-                $articlePic = pathinfo($picName, PATHINFO_BASENAME);
-            }
-            $article->update([
-                'article_pic' => $articlePic,
-            ]);
-        }
+        $pic = $request->file('articlePic');
+        $article->storeFile($pic);
         $article->categories()->sync(request('category'));
         return redirect()->route('admin.articles.index');
 
