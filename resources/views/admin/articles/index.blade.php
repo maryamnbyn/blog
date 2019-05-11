@@ -47,9 +47,9 @@
                                             <td>{{ $article->section_body }}</td>
                                             <td>{{ $article->count }}</td>
                                             <td>
-                                                <form action="{{ route('admin.articles.destroy',['article' =>$article->id ]) }}" method="POST">
+                                                <form action="{{ route('admin.articles.destroy',['article' =>$article->slug ]) }}" method="POST">
                                                     <a class="btn btn-primary"
-                                                       href="{{ route('admin.articles.edit',['article' =>$article->id ])  }}">ویرایش</a>
+                                                       href="{{ route('admin.articles.edit',['article' =>$article->slug ])  }}">ویرایش</a>
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-danger" onClick="deleteme({{$article->id}})">حذف

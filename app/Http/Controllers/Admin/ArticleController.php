@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Article;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleStoreRequest;
+use App\Http\Requests\ArticleUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,15 +41,9 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(ArticleStoreRequest $request)
     {
-        $this->validate($request, [
-            'title'      => 'required|unique:articles',
-            'articlePic' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'category'   => 'required',
-            'body'       => 'required'
-        ]);
-
+        $request->validated();
         $article = Article::create([
             'user_id'     => Auth::user()->id,
             'title'       => $request->input('title'),
@@ -80,15 +76,10 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, Article $article)
+    public function update(ArticleUpdateRequest $request, Article $article)
     {
-        $this->validate($request, [
-            'title' => 'required',
-            'category' => 'required',
-            'body' => 'required'
-        ]);
+        $request->validated();
         $article->update([
-            'user_id' => (Auth::user()->id),
             'title' => $request->input('title'),
             'body' => $request->input('body'),
         ]);

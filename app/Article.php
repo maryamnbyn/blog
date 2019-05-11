@@ -51,7 +51,7 @@ class Article extends Model
 
     public function getSectionBodyAttribute()
     {
-        return Str::words($this->body,15);
+        return Str::words($this->body,11);
     }
 
     public function categories()

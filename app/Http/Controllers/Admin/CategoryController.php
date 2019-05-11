@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\article;
 use App\category;
+use App\Http\Requests\CategoryStoreRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use PhpParser\Node\Stmt\DeclareDeclare;
@@ -38,11 +39,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:categories'
-        ]);
+        $request->validated();
+
        Category::create([
            'name' => $request->input('name')
        ]);
@@ -70,11 +70,9 @@ class CategoryController extends Controller
      */
 
 
-    public function update(Request $request,Category $category)
+    public function update(CategoryStoreRequest $request,Category $category)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:categories',
-        ]);
+        $request->validated();
         $category->update(['name'=>$request->name]);
         return redirect('admin/category');
 

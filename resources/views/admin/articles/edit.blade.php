@@ -31,7 +31,7 @@
                                     </ui>
                                 </div>
                             @endif
-                            <form id="validationform" action="{{route('admin.articles.update',['article'=>$article->id])}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
+                            <form id="validationform" action="{{route('admin.articles.update',['article'=>$article->slug])}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row">

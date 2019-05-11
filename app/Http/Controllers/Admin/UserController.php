@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,15 +40,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
-        $this->validate($request, [
-            'name'      => 'required',
-            'family'    => 'required',
-            'phone'     => 'required',
-            'email'     => 'required|unique:users|email',
-            'password'  => 'required|string'
-        ]);
+        $request->validated();
          User::create([
             'name'     => $request->input('name'),
             'family'   => $request->input('family'),
@@ -74,14 +70,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $user)
+    public function update(UserUpdateRequest $request,User $user)
     {
-        $this->validate($request, [
-        'name'      => 'required',
-        'family'    => 'required',
-        'phone'     => 'required',
-        'password'  => 'required'
-    ]);
+        $request->validated();
         $user->update([
             'name'     => $request->input('name'),
             'family'   => $request->input('family'),
