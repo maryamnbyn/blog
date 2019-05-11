@@ -21,7 +21,7 @@
 
         <div class="media-body">
             <h6>{{$article->user->full_name}}
-                <small><i class="mr-3">{{$comment->created_at}}</i></small>
+                <small><i class="mr-3">{{verta($comment->created_at)->formatDifference()}}</i></small>
             </h6>
             <p style="font-size: 12px" id="comment_message">{{$comment->body}}</p>
         </div>

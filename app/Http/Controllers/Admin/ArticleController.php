@@ -96,7 +96,6 @@ class ArticleController extends Controller
         $article->storeFile($pic);
         $article->categories()->sync(request('category'));
         return redirect()->route('admin.articles.index');
-
     }
     /**
      * Remove the specified resource from storage.

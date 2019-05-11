@@ -34,6 +34,11 @@ class Article extends Model
         ];
     }
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -64,6 +69,5 @@ class Article extends Model
                 'article_pic' => $articlePic
             ]);
         }
-
     }
 }

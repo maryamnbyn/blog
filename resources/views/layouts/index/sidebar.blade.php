@@ -16,7 +16,7 @@
 
                 <div class="media py-2 border-bottom ">
                     <div class="media-body">
-                        <a href="{{url('articles',$count->id)}}" class="side-link">
+                        <a href="{{route('articles.show',$count->slug)}}" class="side-link">
                             {{$count->section_body}}
                         </a>
                     </div>
@@ -32,7 +32,7 @@
 
                 <div class="media py-2 border-bottom ">
                     <div class="media-body">
-                        <a href="{{route('articles.show',['article' => $article->id])}}" class="side-link">
+                        <a href="{{route('articles.show',['article' => $article->slug])}}" class="side-link">
                             {{$article->section_body}}</a>
                     </div>
                     <img src="{{asset('storage/public/upload/'.$article->article_pic)}}"
