@@ -24,16 +24,6 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('admin.category.create');
-
-    }
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
@@ -41,12 +31,11 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-        $request->validated();
 
        Category::create([
            'name' => $request->input('name')
        ]);
-        return redirect('admin/category');
+        return back();
 
     }
     /**
@@ -72,7 +61,7 @@ class CategoryController extends Controller
 
     public function update(CategoryStoreRequest $request,Category $category)
     {
-        $request->validated();
+
         $category->update(['name'=>$request->name]);
         return redirect('admin/category');
 

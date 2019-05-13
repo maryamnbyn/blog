@@ -43,7 +43,6 @@ class ArticleController extends Controller
 
     public function store(ArticleStoreRequest $request)
     {
-        $request->validated();
         $article = Article::create([
             'user_id'     => Auth::user()->id,
             'title'       => $request->input('title'),
@@ -78,7 +77,6 @@ class ArticleController extends Controller
 
     public function update(ArticleUpdateRequest $request, Article $article)
     {
-        $request->validated();
         $article->update([
             'title' => $request->input('title'),
             'body' => $request->input('body'),

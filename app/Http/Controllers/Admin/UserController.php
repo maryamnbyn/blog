@@ -42,7 +42,7 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $request->validated();
+
          User::create([
             'name'     => $request->input('name'),
             'family'   => $request->input('family'),
@@ -72,7 +72,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request,User $user)
     {
-        $request->validated();
+
         $user->update([
             'name'     => $request->input('name'),
             'family'   => $request->input('family'),

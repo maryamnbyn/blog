@@ -26,6 +26,31 @@
                     <div class="card">
                         <h5 class="card-header body">لیست دسته بندی ها</h5>
                         <div class="card-body">
+                            @if(count($errors))
+                                <div class="alert alert-danger">
+                                    <ui>
+                                        @foreach($errors->all() as $error)
+                                            <li> {{$error}}</li>
+                                        @endforeach
+                                    </ui>
+                                </div>
+                            @endif
+                            <form id="validationform" action="{{route('admin.category.store')}}" data-parsley-validate="" novalidate="" method="post" enctype="multipart/form-data">
+                                {!! csrf_field() !!}
+                                <div class="form-group row">
+                                    <label class="col-12 col-sm-3 col-form-label text-sm-right">عنوان دسته بندی:</label>
+                                    <div class="col-12 col-sm-8 col-lg-6">
+                                        <input type="text" name="name" class="form-control" autofocus="autofocus">                            </div>
+                                </div>
+                                <div class="form-group row text-right">
+                                    <div class="col col-sm-10 col-lg-9 offset-sm-1 offset-lg-0">
+                                        <button type="submit" class="btn btn-space btn-primary">ایجاد دسته بندی جدید</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered first">
                                     <thead>

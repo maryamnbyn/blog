@@ -18,7 +18,7 @@ Route::group(['as'=>'admin.','namespace' => 'Admin' ,'prefix' => 'admin', 'middl
     Route::resource('/articles', 'ArticleController')->except('show');
     Route::resource('/category', 'CategoryController')->except('show');;
     Route::resource('/users', 'UserController')->except('show');;
-    Route::get('/dashboard', 'UserController@dashboard');
+    Route::get('/dashboard', 'UserController@dashboard')->name('adminpannel');
 });
 
 //Route site
@@ -26,7 +26,7 @@ Route::group(['as'=>'admin.','namespace' => 'Admin' ,'prefix' => 'admin', 'middl
 Route::group(['namespace' => 'Site'] ,function(){
     Route::resource('/articles', 'ArticleController')->only('index','show');
     Route::resource('/category', 'CategoryController')->only('index','show');
-    Route::get('/comment', 'CommentController@index')->name('comment.index');
+    Route::get('/comment/{id}', 'CommentController@index')->name('comment.index');
     Route::post('/comment', 'CommentController@store')->name('comment.store');
     Route::get('/', 'ArticleController@index');
 

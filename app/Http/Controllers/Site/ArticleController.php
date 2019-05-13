@@ -16,6 +16,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest()->paginate(config('page.paginate_page'));
+
         return view('site.home',compact('articles'));
     }
 
@@ -27,8 +28,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $article->count = $article-> count+1;
-        $article->save();
+        $article->storeCount();
         return view('site.articleDetail', compact('article'));
     }
 
