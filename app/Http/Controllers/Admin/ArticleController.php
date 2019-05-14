@@ -7,7 +7,6 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Http\Requests\ArticleUpdateRequest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller

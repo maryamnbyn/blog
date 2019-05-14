@@ -8,9 +8,11 @@
     url('../font/IRANSansWeb(FaNum)_Light.woff') format('woff'),  /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
     url('../font/IRANSansWeb(FaNum)_Light.ttf') format('truetype');
 }
+
 body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
     font-family:'IRANSans' !important; ;
 }
+
 body{
     border-top: 4px solid #009bff;
     border-bottom: 4px solid #009bff;
@@ -18,22 +20,27 @@ body{
     background-repeat: no-repeat;
     background-position: center top;
 }
+
 nav{
     border-bottom: 4px solid #009bff;
 }
+
 .content{
     font-size: 13px;
     line-height: 24px;
     text-align: justify;
 }
+
 .side-link{
     font-size: 10px;
     color: black;
     line-height: 15px;
 }
+
 .side-link:hover{
     text-decoration: none;
 }
+
 .title span{
     padding: 5px 10px;
     background: #009bff;
@@ -42,11 +49,24 @@ nav{
     color: white;
     border-radius: 0px 0 5px 5px;
 }
+
 .title{
     border-top: 3px solid #009bff;
 }
+
 .rtl
 {
     text-align: right;
 
+}
+
+.logout-btn {
+    border: 0 !important;
+    background-color: transparent;
+    cursor: pointer;
+    color: #dc3545;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
 }

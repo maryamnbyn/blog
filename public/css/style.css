@@ -600,20 +600,27 @@ li.grey{
 .f-title{
     border-bottom: 2px solid #ef5661;
 }
+
 footer{
     background: #eceff1;
 }
+
 .fix-pic
 {
     width: 100%;
     height: 150px;
 
 }
+
 .fix-height {
     height: 150px;
 }
+
 .img-max-width {
     width: 100%;
     height: 200px;
 
 }
+
+
+

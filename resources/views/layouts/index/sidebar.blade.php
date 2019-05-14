@@ -12,6 +12,7 @@
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
             @foreach( $view_count as $count )
 
                 <div class="media py-2 border-bottom ">

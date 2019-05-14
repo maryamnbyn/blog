@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\article;
 use App\category;
 use App\Http\Requests\CategoryStoreRequest;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use PhpParser\Node\Stmt\DeclareDeclare;
 
 class CategoryController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
+
         return view('admin.category.index', compact('categories'));
     }
 
@@ -31,7 +28,6 @@ class CategoryController extends Controller
      */
     public function store(CategoryStoreRequest $request)
     {
-
        Category::create([
            'name' => $request->input('name')
        ]);

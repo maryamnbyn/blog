@@ -1,5 +1,9 @@
-<title>خانه</title>
 @extends('index')
+
+@section('title')
+  {{$category->name}}
+@endsection
+
 @section('content')
     <div class="row">
         @foreach($articles as $article)

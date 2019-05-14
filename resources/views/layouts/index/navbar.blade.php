@@ -11,7 +11,7 @@
                 <a class="nav-link" href="/"> خانه <span class="sr-only">(current)</span></a>
             </li>
             <li class="dropdown open">
-                <a href="/category" class="nav-link dropdown-toggle pointer" id="dropdownMenuButton"
+                <a href="#" class="nav-link dropdown-toggle pointer" id="dropdownMenuButton"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     مقالات
                     <span class="caret"></span>
@@ -33,20 +33,23 @@
             </li>
 
         </ul>
+        <ul class=" navbar-nav pr-3 a">
         @if(Auth::check())
-            <div class="navbar-nav pr-3 a">
+
+            <li>
                 <form action="{{route('logout')}}" method="post">
                     {!! csrf_field() !!}
-                    <button class="btn btn-xs btn-warning">خروج از حساب کاربری</button>
+                    <button class="logout-btn" style="margin-left: 10px">خروج از حساب کاربری</button>
                 </form>
+            </li>
             @if(Auth::user()->role == 'admin')
-                    <a href="/admin/dashboard">
-                        <button class="btn btn-xs btn-warning">پنل ادمین</button>
-                    </a>
-                </div>
+                    <li>
+                        <a href="/admin/dashboard" style="margin-left: 10px">ادمین پنل</a>
+                    </li>
+
+
             @endif
         @else
-            <ul class=" navbar-nav pr-3 a">
                 <li>
                     <a href="/login" style="margin-left: 10px">ورود</a>
                 </li>
@@ -55,8 +58,7 @@
                     <a href="/register">عضویت</a>
                 </li>
 
-            </ul>
-
         @endif
+        </ul>
     </div>
 </nav>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Site;
 
 use App\Article;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -16,8 +15,8 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest()->paginate(config('page.paginate_page'));
-
-        return view('site.home',compact('articles'));
+        $slide_articles = $articles->take(4);
+        return view('site.home',compact('articles','slide_articles'));
     }
 
     /**
