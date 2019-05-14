@@ -13,8 +13,14 @@ class User extends Authenticatable
      * @var array
      */
 
-    protected $guarded =[];
-
+    protected $fillable = [
+        'name',
+        'family',
+        'phone',
+        'email',
+        'role',
+        'password',
+    ];
     use Notifiable;
 
     protected $appends = ['full_name'];

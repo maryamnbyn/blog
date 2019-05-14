@@ -8,8 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 
 {
-    protected $guarded =[];
-
+    protected $fillable=[
+        'user_id',
+        'article_id',
+        'body'
+    ];
     public function user()
     {
         return $this->belongsTo(User::class);

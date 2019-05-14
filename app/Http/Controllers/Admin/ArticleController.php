@@ -94,7 +94,7 @@ class ArticleController extends Controller
     {
         if ($article != null) {
             $article->delete();
-            return redirect()->back();
+            return back();
         }
     }
 }
