@@ -63,6 +63,7 @@ class Article extends Model
             ]);
         }
     }
+
     public function storeCount()
     {
         $this->count = $this->count+1;

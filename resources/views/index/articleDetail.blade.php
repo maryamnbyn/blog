@@ -65,7 +65,16 @@
                                         </h6>
                                         <h6>
                                             <small><i class="mr-3"
-                                                      id="created_at">{{ verta($comment->created_at)->formatDifference() }}</i>
+                                                      id="created_at">
+                                                   <?php
+                                                    $created = new \Carbon\Carbon($comment->created_at);
+                                                    $now = \Carbon\Carbon::now();
+                                                    $difference = ($created->diff($now)->days < 7)
+                                                     ? verta($comment->created_at)->formatDifference()
+                                                     : verta($comment->created_at)->format('%B %d، %Y - H:i');
+                                                    echo $difference;
+                                                ?>
+                                                </i>
                                             </small>
                                         </h6>
                                         <p style="font-size: 12px" id="comment_message">{{ $comment->body }}</p>

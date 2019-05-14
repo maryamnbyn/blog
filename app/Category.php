@@ -26,6 +26,7 @@ class Category extends Model
             ]
         ];
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -35,6 +36,7 @@ class Category extends Model
     {
         return $this->belongsToMany(Article::class);
     }
+
     public function getRouteKeyName()
     {
         return 'slug';
