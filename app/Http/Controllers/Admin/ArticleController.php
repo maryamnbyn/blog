@@ -1,9 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
-use App\Article;
-use App\Category;
+use App\{Article,Category};
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Http\Requests\ArticleUpdateRequest;

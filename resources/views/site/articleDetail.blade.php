@@ -43,7 +43,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="comment">نظر:</label>
-                                <textarea name="comment" class="form-control" id="comment" cols="30" rows="4"></textarea>
+                                <textarea name="comment" class="form-control" id="comment" cols="30" rows="4" required></textarea>
                             </div>
                             <input type="hidden" name="article_id" value="{{$article['id']}}" id="article_id">
                             <button type="submit" class="btn btn-primary">ارسال نظر</button>
@@ -117,7 +117,6 @@
                         }
                     })
                 });
-
             });
         </script>
 @endsection
