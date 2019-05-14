@@ -9,15 +9,7 @@ use Illuminate\Support\Str;
 class Article extends Model
 {
     use Sluggable;
-
-    protected $fillable = [
-        'title',
-        'body',
-        'slug',
-        'article_pic',
-        'category_id',
-        'user_id'
-    ];
+    protected $guarded =[];
     protected $appends=['section_body'];
 
     /**
