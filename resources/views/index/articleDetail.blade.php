@@ -43,7 +43,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="comment">نظر:</label>
-                                <textarea name="comment" class="form-control" id="comment" cols="30" rows="4" required></textarea>
+                                <textarea name="comment" class="form-control" id="comment" cols="30" rows="4"
+                                          required></textarea>
                             </div>
                             <input type="hidden" name="article_id" value="{{$article['id']}}" id="article_id">
                             <button type="submit" class="btn btn-primary">ارسال نظر</button>
@@ -55,13 +56,17 @@
 
                             @foreach($article->comments as $comment)
                                 <div class="media border p-3 my-2" id="comment_box">
-                                    <img src="/site/img/img_avatar3.png" alt="John Doe" class="ml-3 mt-3 rounded-circle" style="width:60px;">
+                                    <img src="/site/img/img_avatar3.png" alt="John Doe" class="ml-3 mt-3 rounded-circle"
+                                         style="width:60px;">
                                     <div class="media-body">
                                         <h6>
-                                            <small><i class="mr-3" id="created_at">{{$comment->user->full_name}}</i></small>
+                                            <small><i class="mr-3" id="created_at">{{$comment->user->full_name}}</i>
+                                            </small>
                                         </h6>
                                         <h6>
-                                            <small><i class="mr-3" id="created_at">{{ verta($comment->created_at)->formatDifference() }}</i></small>
+                                            <small><i class="mr-3"
+                                                      id="created_at">{{ verta($comment->created_at)->formatDifference() }}</i>
+                                            </small>
                                         </h6>
                                         <p style="font-size: 12px" id="comment_message">{{ $comment->body }}</p>
                                     </div>
@@ -117,7 +122,7 @@
 
         </div>
     </div>
-    @endsection
+@endsection
 
 
 

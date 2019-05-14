@@ -16,7 +16,7 @@ class ArticleController extends Controller
     {
         $articles = Article::latest()->paginate(config('page.paginate_page'));
         $slide_articles = $articles->take(4);
-        return view('site.home',compact('articles','slide_articles'));
+        return view('index.home',compact('articles','slide_articles'));
     }
 
     /**
@@ -28,7 +28,7 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         $article->storeCount();
-        return view('site.articleDetail', compact('article'));
+        return view('index.articleDetail', compact('article'));
     }
 
 

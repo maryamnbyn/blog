@@ -1,4 +1,7 @@
-<title>خانه</title>
+@section('title')
+    خانه
+    @endsection
+
 @extends('index')
 @section('offer')
     <!-- start slider-->

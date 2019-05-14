@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         $articles = $category->articles;
-        return view('site.articles-category' ,compact('articles','category'));
+        return view('index.articlesCategory' ,compact('articles','category'));
     }
 
 
