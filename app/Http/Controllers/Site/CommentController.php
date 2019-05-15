@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Site;
 
 use App\Comment;
+use App\Events\CommentCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentStoreRequest;
-use App\Mail\CommentCreated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,8 +20,7 @@ public function store(CommentStoreRequest $request)
                 'article_id' => $request->input('article_id'),
                 'body' => $request->input('comment')
             ]);
-
-            Mail::to(Auth::user())->send(new CommentCreated($comment));
+            event(new CommentCreated($comment ,Auth::user()));
 
         }
 

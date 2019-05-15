@@ -8,9 +8,10 @@
     <title>Document</title>
 </head>
 <body>
-سلام {{\Illuminate\Support\Facades\Auth::user()->name}}
+سلام {{$user->name}}
 <br>
-کامنت  {{$comment->user->name}} ایجاد شد ! {{$comment['body']}} توسط
+this comment {{$comment->user->name}} via {{$comment['body']}} maked!
+
 
 </body>
 </html>
