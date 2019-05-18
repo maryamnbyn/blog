@@ -13,17 +13,18 @@ class SendCommentCreated extends Mailable
 {
     use Queueable, SerializesModels;
     public $comment;
-    public $user;
+    public $userName;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(Comment $comment,User $user)
+    public function __construct(Comment $comment,$userName)
     {
         $this->comment = $comment;
-        $this->user = $user;
+        $this->userName = $userName;
+
     }
 
     /**

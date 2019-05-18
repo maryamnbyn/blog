@@ -6,6 +6,7 @@ use App\Comment;
 use App\Events\CommentCreated;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CommentStoreRequest;
+use App\Jobs\verificationEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
@@ -20,7 +21,8 @@ public function store(CommentStoreRequest $request)
                 'article_id' => $request->input('article_id'),
                 'body' => $request->input('comment')
             ]);
-            event(new CommentCreated($comment ,Auth::user()));
+//            event(new CommentCreated($comment ,Auth::user()));
+              verificationEmail::dispatch($comment)->onQueue('CommentQueue')->delay(now()->addSecond(5));
 
         }
 

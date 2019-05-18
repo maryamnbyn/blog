@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-سلام {{$user->name}}
+سلام {{$userName}}
 <br>
 this comment {{$comment->user->name}} via {{$comment['body']}} maked!
 
